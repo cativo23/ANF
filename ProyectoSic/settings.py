@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'agendaTPI$contables_db',
         'USER': 'agendaTPI',
         'PASSWORD':'activo23',
-        'HOST': 'localhost',
+        'HOST': 'agendaTPI.mysql.pythonanywhere-services.com',
     }
 }
 
