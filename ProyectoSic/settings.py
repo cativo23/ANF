@@ -79,11 +79,10 @@ WSGI_APPLICATION = 'ProyectoSic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'contables_db',
-        'USER': 'root',
+        'NAME': 'agendaTPI$contables_db',
+        'USER': 'agendaTPI',
         'PASSWORD':'activo23',
         'HOST': 'localhost',
-        'PORT': 3306,
     }
 }
 
