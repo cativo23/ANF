@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block typeofbody %}
+<body>
+{% endblock %}
+{% block typeofheader %}
+  <header id="header">
+{% endblock %}
+{% block navbar %}
+<ul>
+  <li><a href="/">Inicio</a></li>
+  <li><a href="/catalogo">Catalogo Cuentas</a></li>
+  <li><a href="/periodoConta">Periodos</a></li>
+  <li>
+    <a href="/settings" class="icon fa-angle-down">Configuracion</a>
+    <ul>
+      <li><a href="/settings/password">Contrasenia</a></li>
+    </ul>
+  </li>
+<li><a href="/logout" class="button">Cerrar Sesion</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+
+
+<section id="main" class="container">
+  <div class="row">
+    <div class="12u">
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags == 'success' %}
+      <p style="color: green"> <u>{{ message }}</u></p>
+          {% else %}
+      <p style="color: red"><u>{{ message }}</u> </p>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% for error in form.non_field_errors %}
+      <div class="alert alert-danger" >
+        <strong style="color: red">{{ error|escape }}</strong>
+      </div>
+      {% endfor %}
+      <!-- Table -->
+
+          <div class="card-header">
+              <i class="fa fa-list"></i><h4>Balance General</h4>
+          </div>
+
+          <div class="table-wrapper">
+						<table>
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<td><h3>Activos Corrientes:</h3></td>
+										</tr>
+										<tr>
+											<td>Cuenta</td>
+											<td>Total</td>
+										</tr>
+										<tr>
+											{% for activo in activos%}
+											<td>{{activo.nombre}}</td>
+											<td>{{activo.saldoDeudor}}</td>
+										</tr>
+										{% endfor %}
+										<tr>
+											<td></td>
+						        			<td>_____</td>
+						    			</tr>
+						    			<tr>
+						    				{% for cap in estadoGral%}
+						    				<td>Total</td>
+						    				<td>{{cap.debe}}</td>
+						    				</tr>
+						    				{% endfor %}
+									</table>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td><h3>Pasivos Corrientes:</h3></td>
+										</tr>
+										<tr>
+											<td>Cuenta</td>
+											<td>Total</td>
+										</tr>
+										<tr>
+											{% for pasivo in pasivos%}
+											<td>{{pasivo.nombre}}</td>
+											<td>{{pasivo.saldoAcreedor}}</td>
+										</tr>
+										{% endfor %}
+										<tr>
+											<td><h3>Capital:</h3></td>
+										</tr>
+										<tr>
+											<td>Cuenta</td>
+											<td>Total</td>
+										</tr>
+										<tr>
+											{% for capital in cap %}
+											<td>Capital</td>
+											<td>{{capital.capitalContable}}</td>
+										</tr>
+											{% endfor %}
+										<tr>
+											{% for capital in cap %}
+											<td>Utilidades Retenidas</td>
+											<td>{{capital.UtilidadRetenida}}</td>
+										</tr>
+											{% endfor %}
+										<tr>
+											<td></td>
+						        			<td>_____</td>
+						    			</tr>
+						    			<tr>
+						    				{% for cap in estadoGral%}
+						    				<td>Total</td>
+						    				<td>{{cap.haber}}</td>
+						    				</tr>
+						    				{% endfor %}
+									</table>
+								</td>
+							</tr>
+						</table>
+          </div>
+          <a href="/generador/{{periodoId}}" class="button special small">Regresar</a>
+        </section>
+
+    </div>
+  </div>
+</section>
+{% endblock content %}
