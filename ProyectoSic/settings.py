@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'agendaTPI$contables_db',
         'USER': 'agendaTPI',
-        'PASSWORD':'activo23',
+        'PASSWORD':'180908112017AC$',
         'HOST': 'agendaTPI.mysql.pythonanywhere-services.com',
     }
 }
